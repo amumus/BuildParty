@@ -40,7 +40,7 @@ public class LoginController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value="/login/sendVerificationCode",method=RequestMethod.POST)
+	@RequestMapping(value="/sendVerificationCode")
 	@ResponseBody
 	public Result sendVerificationCode(long id) {
 		return loginService.sendVerificationCode(id);
@@ -51,10 +51,15 @@ public class LoginController {
 	 * @param code
 	 * @return
 	 */
-	@RequestMapping(value="/login/checkVerificationCode",method=RequestMethod.POST)
+	@RequestMapping(value="/checkVerificationCode",method=RequestMethod.POST)
 	@ResponseBody
 	public Result checkVerificationCode(long id ,String code) {
 		return  loginService.checkVerificationCode(id, code);
 	}
 	
+	@RequestMapping(value="/changePassword",method=RequestMethod.POST)
+	@ResponseBody
+	public Result changePassword(long id ,String password,String code) {
+		return  loginService.changePassword(id, password, code);
+	}
 }

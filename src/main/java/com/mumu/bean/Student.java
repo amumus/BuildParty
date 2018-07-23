@@ -15,6 +15,8 @@ public class Student {
 
     private String name;
 
+    private String politicalstatus;
+
     public Long getId() {
         return id;
     }
@@ -61,5 +63,13 @@ public class Student {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getPoliticalstatus() {
+        return politicalstatus;
+    }
+
+    public void setPoliticalstatus(String politicalstatus) {
+        this.politicalstatus = politicalstatus == null ? null : politicalstatus.trim();
     }
 }

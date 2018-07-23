@@ -2,6 +2,7 @@ package com.mumu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,15 +24,14 @@ public class NewsController {
 	
 	@RequestMapping("/getNews/{newsId}")
 	@ResponseBody
-	public Result getNewsById(Integer newsId) {
-		System.out.println("newsId"+newsId);
+	public Result getNewsById(@PathVariable Integer newsId) {
 		return newsService.getNewsById(newsId);
 	}
 	
 	@RequestMapping("/getNews")
 	@ResponseBody
 	public Result getNews( @RequestParam(value="page",required=false,defaultValue="0") 
-	Integer page,  @RequestParam(value="rows",required=false,defaultValue="1") Integer rows) {
+	Integer page,  @RequestParam(value="rows",required=false,defaultValue="5") Integer rows) {
 		return newsService.getNewsList(page, rows);
 	}
 	

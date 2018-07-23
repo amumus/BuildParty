@@ -8,6 +8,7 @@
     <result column="validataCode" jdbcType="CHAR" property="validatacode" />
     <result column="outDate" jdbcType="TIMESTAMP" property="outdate" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="politicalStatus" jdbcType="VARCHAR" property="politicalstatus" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, password, email, validataCode, outDate, name
+    id, password, email, validataCode, outDate, name, politicalStatus
   </sql>
   <select id="selectByExample" parameterType="com.mumu.bean.StudentExample" resultMap="BaseResultMap">
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.mumu.bean.Student">
     insert into tb_student (id, password, email, 
-      validataCode, outDate, name
-      )
+      validataCode, outDate, name, 
+      politicalStatus)
     values (#{id,jdbcType=BIGINT}, #{password,jdbcType=CHAR}, #{email,jdbcType=CHAR}, 
-      #{validatacode,jdbcType=CHAR}, #{outdate,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}
-      )
+      #{validatacode,jdbcType=CHAR}, #{outdate,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
+      #{politicalstatus,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.mumu.bean.Student">
     insert into tb_student
@@ -129,6 +130,9 @@
       <if test="name != null">
         name,
       </if>
+      <if test="politicalstatus != null">
+        politicalStatus,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -148,6 +152,9 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalstatus != null">
+        #{politicalstatus,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.politicalstatus != null">
+        politicalStatus = #{record.politicalstatus,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       email = #{record.email,jdbcType=CHAR},
       validataCode = #{record.validatacode,jdbcType=CHAR},
       outDate = #{record.outdate,jdbcType=TIMESTAMP},
-      name = #{record.name,jdbcType=VARCHAR}
+      name = #{record.name,jdbcType=VARCHAR},
+      politicalStatus = #{record.politicalstatus,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="politicalstatus != null">
+        politicalStatus = #{politicalstatus,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -222,7 +236,8 @@
       email = #{email,jdbcType=CHAR},
       validataCode = #{validatacode,jdbcType=CHAR},
       outDate = #{outdate,jdbcType=TIMESTAMP},
-      name = #{name,jdbcType=VARCHAR}
+      name = #{name,jdbcType=VARCHAR},
+      politicalStatus = #{politicalstatus,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

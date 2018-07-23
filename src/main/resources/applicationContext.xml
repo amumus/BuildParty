@@ -13,7 +13,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	<!-- 数据源 事物控制 -->
-	<context:property-placeholder location="classpath:dbconfig.properties"/>
+	<context:property-placeholder location="classpath:*.properties"/>
 	
 	<bean  id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>

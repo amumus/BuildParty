@@ -49,9 +49,13 @@ public class LoginSerivceImpl implements LoginService {
 		Result result = new Result();
 		Map map = new HashMap();
 		if (count == 1) {
+			Student student2 = studentMapper.selectByPrimaryKey(student.getId());
 			result.setCode(1);
 			map.put("message", "success");
-			map.put("id", student.getId());
+			map.put("id", student2.getId());
+			map.put("name",student2.getName());
+			map.put("politicalstatus",student2.getPoliticalstatus());
+			map.put("email",student2.getEmail());
 		} else {
 			result.setCode(0);
 			map.put("message", "用户名或密码错误.");
@@ -82,7 +86,7 @@ public class LoginSerivceImpl implements LoginService {
 	    {  
 	        flag.append(sources.charAt(rand.nextInt(9)) + "");  
 	    }  
-//	    System.out.println(flag.toString());  
+	    System.out.println(flag.toString());  
 	    
 	    
 		//将验证码和有效时间保存到数据库,有效时间为5分钟
@@ -152,7 +156,7 @@ public class LoginSerivceImpl implements LoginService {
 			
 			//发送邮箱成功后
 			
-			result.setCode(1);
+			result.setCode(200);
 			map.put("id", id);
 			map.put("message","发送验证码成功！");
 			result.setData(map);
@@ -200,11 +204,32 @@ public class LoginSerivceImpl implements LoginService {
 	/*
 	 * 修改密码
 	 * (non-Javadoc)
-	 * @see com.mumu.service.LoginService#changePassword()
+	 * @see com.mumu.service.LoginService#changePassword(long,String,Strings)
 	 */
-	public Result changePassword() {
-		
-		return null;
+	public Result changePassword(long id,String password,String code) {
+		Result result = new Result();
+		Map map = new HashMap<>();
+		Student student = studentMapper.selectByPrimaryKey(id);
+		if(student==null) {
+			result.setCode(500);
+			map.put("message", "该用户不存在");
+			result.setData(map);
+			return result;
+		}
+		if(code==null || !student.getValidatacode().equals(code)) {
+			result.setCode(500);
+			map.put("message", "验证码错误");
+			result.setData(map);
+			return result;
+		}
+		Student s = new Student();
+		s.setId(id);
+		s.setPassword(password);
+		studentMapper.updateByPrimaryKeySelective(s);
+		result.setCode(200);
+		map.put("message", "修改密码成功！");
+		result.setData(map);
+		return result;
 	}
 
 }

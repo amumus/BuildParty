@@ -37,9 +37,10 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!-- table 指定每个表生成策略 -->
-		<table tableName="tb_student" domainObjectName="Student">
+	<!-- 	<table tableName="tb_student" domainObjectName="Student">
 		</table>
-		<!-- <table tableName="tb_news" domainObjectName="News">
+		<table tableName="tb_news" domainObjectName="News">
 		</table> -->
+		<table tableName="tb_content" domainObjectName="Content"></table>
 	</context>
 </generatorConfiguration>

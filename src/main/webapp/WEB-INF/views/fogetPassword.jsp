@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form  method="post">
+	
 	<lable>用户名：</lable><input id="id" name="id" type="text"/>
-	<lable>动态验证码</lable><input name="code" type="text"/><button id="bt_sendVerificationCode">获取验证码</button><br>
+	<lable>动态验证码</lable><input id="code" name="code" type="text"/><button id="bt_sendVerificationCode">获取验证码</button><br>
 	<button id="bt_checkVerificationCode">提交</button>
-	</form>
+
 </body>
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
@@ -20,11 +20,10 @@
 		$("#bt_sendVerificationCode").click(function(){
 			console.log("点击了发送");
 			$.ajax({
-				contentType: "text/html; charset=utf-8",
 				url:"sendVerificationCode",
-				type:'POST',
+				type:'post',
 				data:{
-					id:$("#id")
+					id:$("#id").val()
 				},
 				success:function(result){
 					console.log(result.code);
@@ -41,10 +40,12 @@
 		});
 		$('#bt_checkVerificationCode').click(function(){
 			$.ajax({
-				contentType: "text/html; charset=utf-8",
 				url:"checkVerificationCode",
 				type:'POST',
-				data:$('form').serialize(),
+				data:{
+					id:$("#id").val(),
+					code:$("#code").val()
+				},
 				success:function(result){
 					console.log(result.code);
 				},

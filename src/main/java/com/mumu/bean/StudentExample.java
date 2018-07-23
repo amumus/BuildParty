@@ -504,6 +504,76 @@ public class StudentExample {
             addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
+
+        public Criteria andPoliticalstatusIsNull() {
+            addCriterion("politicalStatus is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusIsNotNull() {
+            addCriterion("politicalStatus is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusEqualTo(String value) {
+            addCriterion("politicalStatus =", value, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusNotEqualTo(String value) {
+            addCriterion("politicalStatus <>", value, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusGreaterThan(String value) {
+            addCriterion("politicalStatus >", value, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusGreaterThanOrEqualTo(String value) {
+            addCriterion("politicalStatus >=", value, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusLessThan(String value) {
+            addCriterion("politicalStatus <", value, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusLessThanOrEqualTo(String value) {
+            addCriterion("politicalStatus <=", value, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusLike(String value) {
+            addCriterion("politicalStatus like", value, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusNotLike(String value) {
+            addCriterion("politicalStatus not like", value, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusIn(List<String> values) {
+            addCriterion("politicalStatus in", values, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusNotIn(List<String> values) {
+            addCriterion("politicalStatus not in", values, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusBetween(String value1, String value2) {
+            addCriterion("politicalStatus between", value1, value2, "politicalstatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPoliticalstatusNotBetween(String value1, String value2) {
+            addCriterion("politicalStatus not between", value1, value2, "politicalstatus");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -46,8 +46,7 @@ public class NewsServiceImpl implements NewsService{
 		//修改逆向工程生成的代码，去掉content
 //		List<News> list = newsMapper.selectByExample(newsExample);
 		Integer start = page*rows;
-		Integer end = (page+1)*rows;
-		List<News> list = newsMapper.selectList(start ,end);
+		List<News> list = newsMapper.selectList(start ,rows);
 //		PageInfo<News> pageInfo = new PageInfo<>(list);
 //		map.put("total", pageInfo.getTotal());
 		map.put("list", list);

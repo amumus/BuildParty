@@ -16,8 +16,6 @@ public interface NewsMapper {
 
     int insertSelective(News record);
 
-    List<News> selectList(@Param("start")Integer start,@Param("end")Integer end);
-    
     List<News> selectByExampleWithBLOBs(NewsExample example);
 
     List<News> selectByExample(NewsExample example);
@@ -35,4 +33,6 @@ public interface NewsMapper {
     int updateByPrimaryKeyWithBLOBs(News record);
 
     int updateByPrimaryKey(News record);
+    
+    List<News> selectList(@Param("start")Integer start,@Param("rows")Integer rows);
 }

@@ -19,6 +19,6 @@ public interface LoginService {
 	/*
 	 * 修改密码
 	 */
-	public Result changePassword();
+	public Result changePassword(long id,String password,String code);
 	
 }

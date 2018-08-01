@@ -11,14 +11,14 @@ public interface LoginService {
 	/*
 	 * 发送验证码
 	 */
-	public Result sendVerificationCode(long id);
+	public Result sendVerificationCode(String id);
 	/*
 	 * 匹配验证码
 	 */
-	public Result checkVerificationCode(long id,String code);
+	public Result checkVerificationCode(String id,String code);
 	/*
 	 * 修改密码
 	 */
-	public Result changePassword(long id,String password,String code);
+	public Result changePassword(String id,String password,String code);
 	
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mumu.dao.StudentMapper">
   <resultMap id="BaseResultMap" type="com.mumu.bean.Student">
-    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="id" jdbcType="CHAR" property="id" />
     <result column="password" jdbcType="CHAR" property="password" />
     <result column="email" jdbcType="CHAR" property="email" />
     <result column="validataCode" jdbcType="CHAR" property="validatacode" />
@@ -85,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tb_student
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from tb_student
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.mumu.bean.StudentExample">
     delete from tb_student
@@ -102,12 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.mumu.bean.Student">
-    insert into tb_student (id, password, email, 
-      validataCode, outDate, name, 
-      politicalStatus)
-    values (#{id,jdbcType=BIGINT}, #{password,jdbcType=CHAR}, #{email,jdbcType=CHAR}, 
-      #{validatacode,jdbcType=CHAR}, #{outdate,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, 
-      #{politicalstatus,jdbcType=VARCHAR})
+    insert into tb_student (id, password, email, validataCode, 
+      outDate, name, politicalStatus
+      )
+    values (#{id,jdbcType=CHAR}, #{password,jdbcType=CHAR}, #{email,jdbcType=CHAR}, #{validatacode,jdbcType=CHAR}, 
+      #{outdate,jdbcType=TIMESTAMP}, #{name,jdbcType=VARCHAR}, #{politicalstatus,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.mumu.bean.Student">
     insert into tb_student
@@ -136,7 +136,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=CHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=CHAR},
@@ -168,7 +168,7 @@
     update tb_student
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=CHAR},
       </if>
       <if test="record.password != null">
         password = #{record.password,jdbcType=CHAR},
@@ -195,7 +195,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update tb_student
-    set id = #{record.id,jdbcType=BIGINT},
+    set id = #{record.id,jdbcType=CHAR},
       password = #{record.password,jdbcType=CHAR},
       email = #{record.email,jdbcType=CHAR},
       validataCode = #{record.validatacode,jdbcType=CHAR},
@@ -228,7 +228,7 @@
         politicalStatus = #{politicalstatus,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.mumu.bean.Student">
     update tb_student
@@ -238,6 +238,6 @@
       outDate = #{outdate,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},
       politicalStatus = #{politicalstatus,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>

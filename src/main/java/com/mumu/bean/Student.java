@@ -3,7 +3,7 @@ package com.mumu.bean;
 import java.util.Date;
 
 public class Student {
-    private Long id;
+    private String id;
 
     private String password;
 
@@ -17,12 +17,12 @@ public class Student {
 
     private String politicalstatus;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getPassword() {

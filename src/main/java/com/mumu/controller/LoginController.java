@@ -28,7 +28,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	@ResponseBody
-	public Result login(long id,String password) {
+	public Result login(String id,String password) {
 		Student student = new Student();
 		student.setId(id);
 		student.setPassword(password);
@@ -42,7 +42,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/sendVerificationCode")
 	@ResponseBody
-	public Result sendVerificationCode(long id) {
+	public Result sendVerificationCode(String id) {
 		return loginService.sendVerificationCode(id);
 	}
 	/**
@@ -53,13 +53,13 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/checkVerificationCode",method=RequestMethod.POST)
 	@ResponseBody
-	public Result checkVerificationCode(long id ,String code) {
+	public Result checkVerificationCode(String id ,String code) {
 		return  loginService.checkVerificationCode(id, code);
 	}
 	
 	@RequestMapping(value="/changePassword",method=RequestMethod.POST)
 	@ResponseBody
-	public Result changePassword(long id ,String password,String code) {
+	public Result changePassword(String id ,String password,String code) {
 		return  loginService.changePassword(id, password, code);
 	}
 }

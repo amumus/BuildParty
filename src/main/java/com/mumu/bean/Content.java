@@ -2,6 +2,8 @@ package com.mumu.bean;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Content {
     private Integer id;
 
@@ -38,7 +40,7 @@ public class Content {
     public void setImage(String image) {
         this.image = image == null ? null : image.trim();
     }
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getCreated() {
         return created;
     }

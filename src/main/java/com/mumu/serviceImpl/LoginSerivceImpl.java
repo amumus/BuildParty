@@ -67,7 +67,7 @@ public class LoginSerivceImpl implements LoginService {
  /**
   * 发送验证码到邮箱
   */
-	public Result sendVerificationCode(long id) {
+	public Result sendVerificationCode(String id) {
 		//验证改用户是否存在
 		Student isExit = studentMapper.selectByPrimaryKey(id);
 		Result result = new Result();
@@ -176,7 +176,7 @@ public class LoginSerivceImpl implements LoginService {
 	 * (non-Javadoc)
 	 * @see com.mumu.service.LoginService#checkVerificationCode(long, int)
 	 */
-	public Result checkVerificationCode(long id, String code) {
+	public Result checkVerificationCode(String id, String code) {
 		Student student = studentMapper.selectByPrimaryKey(id);
 		Result result = new Result();
 		Map map = new HashMap();
@@ -206,7 +206,7 @@ public class LoginSerivceImpl implements LoginService {
 	 * (non-Javadoc)
 	 * @see com.mumu.service.LoginService#changePassword(long,String,Strings)
 	 */
-	public Result changePassword(long id,String password,String code) {
+	public Result changePassword(String id,String password,String code) {
 		Result result = new Result();
 		Map map = new HashMap<>();
 		Student student = studentMapper.selectByPrimaryKey(id);

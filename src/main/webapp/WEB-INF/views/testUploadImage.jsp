@@ -12,10 +12,10 @@
 <script charset="utf-8" src="js/kindeditor/plugins/code/prettify.js"></script>
 </head>
 <body>
-<!--  <form action="uploadFiles" method="post" enctype="multipart/form-data">
+ <form action="uploadFiles" method="post" enctype="multipart/form-data">
      选择文件:<input type="file" name="file">
      <input type="submit" value="上传"> 
- </form> -->
+ </form>
  
  <br/>
 <!--  <input type="text" id="url" value="" /> -->

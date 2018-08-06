@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<td>新闻内容:</td>
-			<td><textarea name="desc" cols="100" rows="8"
+			<td><textarea name="content" cols="100" rows="8"
 					style="width: 700px; height: 200px; visibility: hidden;"></textarea>
 	
 			</td>
@@ -43,7 +43,7 @@
 	//页面初始化完毕后执行此方法
 	$(function() {
 		//创建富文本编辑器
-		newsAddEditor = KindEditor.create("#newsAddForm [name=desc]",
+		newsAddEditor = KindEditor.create("#newsAddForm [name=content]",
 				kindEditorParams);
 		 /**
 	     * 初始化单图片上传组件 <br/>
@@ -76,7 +76,7 @@
 				
 				$.post("news/add",$("#newsAddForm").serialize(), function(data){
 					if(data.code == 200){
-						$.messager.alert('提示','新增内容成功!');
+						$.messager.alert('提示','新增新闻成功!');
 						/* $(".panel-tool-close").click(); */
 					}
 				});

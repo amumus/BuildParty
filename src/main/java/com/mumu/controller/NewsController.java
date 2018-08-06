@@ -30,7 +30,10 @@ public class NewsController {
 	
 	@Autowired
 	private NewsService newsService;
-	
+	/**
+	 * 格式化日期，加此注解即可将接收过来的日期字符串转化为Date类型
+	 * @param binder
+	 */
 	@InitBinder  
 	public void initBinder(WebDataBinder binder) {  
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  

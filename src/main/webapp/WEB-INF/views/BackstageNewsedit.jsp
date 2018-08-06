@@ -85,7 +85,7 @@
 						function(data) {
 							console.log('收到返回')
 							if (data.code == 200) {
-								$.messager.alert('提示', '新增内容成功!');
+								$.messager.alert('提示', '修改成功!');
 								$("#news_dg").datagrid("reload");
 							}
 						});

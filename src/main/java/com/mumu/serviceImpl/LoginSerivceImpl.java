@@ -216,7 +216,19 @@ public class LoginSerivceImpl implements LoginService {
 			result.setData(map);
 			return result;
 		}
-		if(code==null || !student.getValidatacode().equals(code)) {
+		if(code == null || code.trim().equals("")) {
+			result.setCode(500);
+			map.put("message", "验证码为空");
+			result.setData(map);
+			return result;
+		}
+		if(student.getOutdate().before(new Date())) {
+			result.setCode(500);
+			map.put("message", "验证码已失效，请重验证!");
+			result.setData(map);
+			return result;
+		}
+		if(!student.getValidatacode().equals(code)) {
 			result.setCode(500);
 			map.put("message", "验证码错误");
 			result.setData(map);

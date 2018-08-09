@@ -2,6 +2,8 @@ package com.mumu.bean;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Theory {
     private Integer id;
 
@@ -22,7 +24,7 @@ public class Theory {
     public void setId(Integer id) {
         this.id = id;
     }
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getCreated() {
         return created;
     }

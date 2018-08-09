@@ -1,7 +1,13 @@
 package com.mumu.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +18,16 @@ import com.mumu.utils.Result;
 
 @Controller
 public class TheoryController {
-
+	/**
+	 * 格式化日期，加此注解即可将接收过来的日期字符串转化为Date类型
+	 * @param binder
+	 */
+	@InitBinder  
+	public void initBinder(WebDataBinder binder) {  
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+	    dateFormat.setLenient(false);  
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));  
+	}
 	@Autowired
 	private TheoryService theoryService;
 	
